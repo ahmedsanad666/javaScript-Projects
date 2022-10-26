@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+//variables
+$primary: white;
+$secondary: #f81a75;
+
+// mixins
+
+@mixin flex-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  background-color: $secondary;
+}
+
+.container {
+  height: 120vh;
+  position: relative;
+  @include flex-box;
+  padding: 0 2rem;
+  padding-bottom: 3rem;
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 30%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .quiz {
+    // border: 1px red solid;
+    margin: auto;
+    height: 70vh;
+    width: 50%;
+
+    @media only screen and (max-width: 991px) {
+      width: 100%;
+    }
+    .quiz-header {
+      width: 70%;
+      margin: auto;
+      position: relative;
+      z-index: 999;
+      ul {
+        list-style: none;
+        @include flex-box;
+        justify-content: space-around;
+        margin: auto;
+        padding: 1rem 0;
+        background: $primary;
+        color: $secondary;
+        font-weight: 400;
+        font-size: 1.4rem;
+        border-radius: 2rem;
+        box-shadow: 0px 3px 8px rgba($color: #000000, $alpha: 0.6);
+        li {
+          .counter {
+            border-radius: 50% 50%;
+            padding: 27px 20px;
+            background-color: $primary;
+            box-shadow: 0px 3px 8px rgba($color: #000000, $alpha: 0.6);
+            font-size: 1.8rem;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .quiz-question {
+      background: $primary;
+      padding: 2rem 1rem;
+      z-index: 1;
+      margin-top: -20px;
+      border-radius: 1rem;
+      @include flex-box();
+      color: $secondary;
+    }
+
+    .quiz-chioces {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 10px;
+      column-gap: 2rem;
+
+      @media only screen and (max-width: 559px) {
+        grid-template-columns: 1fr;
+      }
+      .btn {
+        @include flex-box();
+
+        button {
+          width: 100%;
+          padding: 1.5rem 0;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          border-radius: 15px;
+          font-size: 1.4rem;
+          color: $secondary;
+          text-transform: capitalize;
+          font-weight: 600;
+          transition: 0.2s all linear;
+          &:hover {
+            background-color: #c0392b;
+            color: $primary;
+            transform: scale(1.05);
+          }
+          &:active {
+            background: #f39c12;
+          }
+        }
+      }
+    }
+    .skip {
+      text-align: center;
+      padding-top: 2rem;
+
+      button {
+        padding: 0.9rem 3rem;
+
+        color: $secondary;
+
+        font-size: 1.4rem;
+        font-weight: 600;
+        outline: none;
+        border: none;
+        border-radius: 29px;
+        cursor: pointer;
+        transition: 0.4s all ease;
+        &:hover {
+          background-color: #c0392b;
+          color: $primary;
+        }
+        &:active {
+          background: #f39c12;
+        }
+      }
+    }
+  }
+}
